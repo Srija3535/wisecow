@@ -1,30 +1,31 @@
-# Cow wisdom web server
+Wisecow Application
 
-# Wisecow Project - Automated Deployment Test
+A simple Bash-based web app that serves random quotes using fortune and cowsay.
+This project demonstrates containerization, Kubernetes deployment, and CI/CD automation.
 
-## Prerequisites
+Features
+1.Dockerized application
+2.Deployed on Kubernetes (Minikube)
+3.Automated CI/CD with GitHub Actions
+4.TLS-ready setup
 
-```
-sudo apt install fortune-mod cowsay -y
-```
+Tech Stack - Docker • Kubernetes • GitHub Actions • Bash
 
-## How to use?
+How to Run for your use : 
+# Clone the repo
+git clone https://github.com/username/wisecow.git
+cd wisecow
+# Build Docker image
+docker build -t wisecow-app .
+# Run container
+docker run -p 4499:4499 wisecow-app
+Then open http://localhost:4499 in your browser.
 
-1. Run `./wisecow.sh`
-2. Point the browser to server port (default 4499)
+Kubernetes Deployment:
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
 
-## What to expect?
-![wisecow](https://github.com/nyrahul/wisecow/assets/9133227/8d6bfde3-4a5a-480e-8d55-3fef60300d98)
-
-# Problem Statement
-Deploy the wisecow application as a k8s app
-
-## Requirement
-1. Create Dockerfile for the image and corresponding k8s manifest to deploy in k8s env. The wisecow service should be exposed as k8s service.
-2. Github action for creating new image when changes are made to this repo
-3. [Challenge goal]: Enable secure TLS communication for the wisecow app.
-
-## Expected Artifacts
-1. Github repo containing the app with corresponding dockerfile, k8s manifest, any other artifacts needed.
-2. Github repo with corresponding github action.
-3. Github repo should be kept private and the access should be enabled for following github IDs: nyrahul
+CI/CD workflow:
+Every push to the main branch:
+ 1.Builds and pushes Docker image
+ 2.Deploys automatically to Minikube
